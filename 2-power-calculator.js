@@ -9,13 +9,12 @@ const powerCalculator = function(base, exponent) {
         return 1
     };
 
+    // General case
     if (exponent > 0) {
-        // Base case
         if (exponent === 1) {
             return base
         };
         
-        // General case
         return base * powerCalculator(base, --exponent);
     };
 }

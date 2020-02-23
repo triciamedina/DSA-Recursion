@@ -1,5 +1,4 @@
 const reverseString = function(string) {
-
     // Base case
     if (string.length === 1) {
         return string

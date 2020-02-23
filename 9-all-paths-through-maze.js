@@ -1,4 +1,4 @@
-const pathThroughMaze = function(maze, row, col) {
+const allPathsThroughMaze = function(maze, row, col) {
     // Base case
     if (maze[row][col] === 'e') {
         return ''
@@ -7,13 +7,13 @@ const pathThroughMaze = function(maze, row, col) {
     // General case
     if (maze[row][col] === ' ') {
         if ((maze[row][col + 1] === ' ') || (maze[row][col + 1] === 'e')) {
-            return `R ${pathThroughMaze(maze, row, (col + 1))}`
-        } else if ((maze[row + 1][col] === ' ' )|| (maze[row + 1][col] === 'e')) {
-            return `D ${pathThroughMaze(maze, (row + 1), col)}`
-        } else if ((maze[row][col - 1] === ' ' )|| (maze[row][col - 1] === 'e')) {
-            return `L ${pathThroughMaze(maze, row, (col - 1))}`
+            return `R ${allPathsThroughMaze(maze, row, (col + 1))}`
+        } else if ((maze[row + 1][col] === ' ' ) || (maze[row + 1][col] === 'e')) {
+            return `D ${allPathsThroughMaze(maze, (row + 1), col)}`
+        } else if ((maze[row][col - 1] === ' ' ) || (maze[row][col - 1] === 'e')) {
+            return `L ${allPathsThroughMaze(maze, row, (col - 1))}`
         } else {
-            return `U ${pathThroughMaze(maze, (row - 1), col)}`
+            return `U ${allPathsThroughMaze(maze, (row - 1), col)}`
         }
     }
 }
@@ -35,4 +35,4 @@ let bigMaze = [
 let row = 0;
 let col = 0;
 
-console.log(pathThroughMaze(bigMaze, row, col));
+console.log(allPathsThroughMaze(bigMaze, row, col));
